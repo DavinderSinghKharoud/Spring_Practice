@@ -24,6 +24,7 @@ public class Alien {
         return "Alien{" +
                 "aID=" + aID +
                 ", aName='" + aName + '\'' +
+                ", tech='" + tech + '\'' +
                 '}';
     }
 
