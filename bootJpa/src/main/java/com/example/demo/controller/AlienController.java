@@ -2,12 +2,13 @@ package com.example.demo.controller;
 
 import com.example.demo.Dao.AlienRepo;
 import com.example.demo.model.Alien;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AlienController {
@@ -44,16 +45,16 @@ public class AlienController {
 
     @RequestMapping("/aliens")
     @ResponseBody
-    public String aliens(){
-        return repo.findAll().toString();
+    public List<Alien> aliens(){
+        return repo.findAll();
 
     }
 
     @RequestMapping("/alien/{aid}")
     @ResponseBody
-    public String getAlienByID(@PathVariable("aid") int aid){
+    public Optional<Alien> getAlienByID(@PathVariable("aid") int aid){
 
-        return repo.findById(aid).toString();
+        return repo.findById(aid);
 
     }
 
