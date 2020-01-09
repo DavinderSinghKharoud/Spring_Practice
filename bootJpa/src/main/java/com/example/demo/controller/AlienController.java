@@ -1,10 +1,16 @@
 package com.example.demo.controller;
 
+import com.example.demo.Dao.AlienRepo;
+import com.example.demo.model.Alien;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AlienController {
+
+    @Autowired
+    AlienRepo repo;
 
     @RequestMapping("/")
     public String home(){
@@ -12,4 +18,10 @@ public class AlienController {
         return "home.jsp";
     }
 
+    @RequestMapping("/addAlien")
+    public String addAlien(Alien alien){
+
+        repo.save(alien);
+        return "home.jsp";
+    }
 }
