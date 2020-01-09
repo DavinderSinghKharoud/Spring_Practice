@@ -14,12 +14,12 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     @RequestMapping("/home")
-    public ModelAndView home(@RequestParam("name") String myName){
+    public ModelAndView home(People people){
 
 
-        //(http://localhost:8080/home?name=sunny)
+        //(http://localhost:8080/home?pID=1&pName=sunny&lang=punjabi)
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("name", myName);
+        modelAndView.addObject("obj", people);
         modelAndView.setViewName("home");
         return modelAndView;
     }

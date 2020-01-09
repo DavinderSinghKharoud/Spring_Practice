@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-hello ${name}
+hello ${obj.pName},${obj.pID}, ${obj.lang}
 </body>
 </html>
