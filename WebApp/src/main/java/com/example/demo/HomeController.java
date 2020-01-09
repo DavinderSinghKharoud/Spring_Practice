@@ -11,10 +11,8 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     @RequestMapping("/home")
-    public String home(HttpServletRequest request){
+    public String home(String name, HttpSession session){
 
-        HttpSession session = request.getSession();
-        String name = request.getParameter("name");
         System.out.println(name);
 
         //(http://localhost:8080/home?name=sunny)
