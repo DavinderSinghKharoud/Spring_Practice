@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class AlienController {
 
     @Autowired
@@ -66,5 +66,11 @@ public class AlienController {
 
     }
 
+    @PutMapping(path="/updateAlien",consumes = "application/json")
+    public Alien saveOrupdateAlien(@RequestBody Alien alien)
+    {
+        repo.save(alien);
+        return alien;
+    }
 
 }
