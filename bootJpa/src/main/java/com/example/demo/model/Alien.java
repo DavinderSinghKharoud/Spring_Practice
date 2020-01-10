@@ -8,7 +8,7 @@ public class Alien {
 
     @Id
     private int aID;
-    private String aName;
+    private String aname;
     private String tech;
 
     public String getTech() {
@@ -23,7 +23,7 @@ public class Alien {
     public String toString() {
         return "Alien{" +
                 "aID=" + aID +
-                ", aName='" + aName + '\'' +
+                ", aName='" + aname + '\'' +
                 ", tech='" + tech + '\'' +
                 '}';
     }
@@ -37,10 +37,10 @@ public class Alien {
     }
 
     public String getaName() {
-        return aName;
+        return aname;
     }
 
     public void setaName(String aName) {
-        this.aName = aName;
+        this.aname = aName;
     }
 }

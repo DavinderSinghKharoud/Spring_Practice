@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class AlienController {
 
     @Autowired
@@ -23,14 +23,15 @@ public class AlienController {
         return "home.jsp";
     }
 
-    @RequestMapping("/addAlien")
-    public String addAlien(Alien alien){
-
+    @PostMapping(path="/alien",consumes = "application/json")
+    public Alien addAlien(@RequestBody Alien alien)
+    {
         repo.save(alien);
-        return "home.jsp";
+        return alien;
     }
 
-    @RequestMapping("/getAlien")
+
+    @GetMapping("/getAlien")
     public ModelAndView getAlien(@RequestParam(value = "aid", required = true) int aid){
 
         ModelAndView mv = new ModelAndView("showAlien.jsp");
@@ -43,8 +44,7 @@ public class AlienController {
         return mv;
     }
 
-    @RequestMapping(value = "/aliens", produces = {"application/xml"})
-    @ResponseBody
+    @RequestMapping(value = "/aliens")
     public List<Alien> aliens(){
         return repo.findAll();
 
