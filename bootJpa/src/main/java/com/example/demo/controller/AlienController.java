@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class AlienController {
 
     @Autowired
@@ -23,11 +23,11 @@ public class AlienController {
         return "home.jsp";
     }
 
-    @PostMapping(path="/alien",consumes = "application/json")
-    public Alien addAlien(@RequestBody Alien alien)
+    @GetMapping(path="/addAlien")
+    public String addAlien( Alien alien)
     {
         repo.save(alien);
-        return alien;
+        return "home.jsp";
     }
 
 
@@ -57,5 +57,14 @@ public class AlienController {
         return repo.findById(aid);
 
     }
+
+    @DeleteMapping("/delAlien/{aid}")
+    public String deleteAlien(@PathVariable String aid){
+        Alien al = repo.getOne(Integer.valueOf(aid));
+        repo.delete(al);
+        return "deleted";
+
+    }
+
 
 }
